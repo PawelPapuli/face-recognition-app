@@ -5,7 +5,6 @@
   "private": true,
   "dependencies": {
     "clarifai": "^2.7.1",
-    "flatten-packages": "^0.1.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-particles-js": "^2.1.3",
