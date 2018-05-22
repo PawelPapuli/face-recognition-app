@@ -44,12 +44,12 @@ class SignIn extends React.Component {
 			<main className="pa4 white-80">
 			  	<div className="measure">
 				    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-					    <legend className="f2 fw6 ph0 mh0 w-auto ml-auto mr-auto">Sign In</legend>
+					    <legend className="f2 fw6 ph0 mh0 w-auto">Sign In</legend>
 					    	<div className="mt3">
 					        	<label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
 					        	<input 
 					        		onChange={this.onEmailChange} 
-					        		className="pa2 input-reset ba b--white-50 bg-transparent hover-bg-white-20 hover-white w-100" 
+					        		className="pa2 input-reset white-80 ba b--white-50 bg-transparent hover-bg-white-20 hover-white w-100" 
 					        		type="email" 
 					        		name="email-address"  
 					        		id="email-address" 
@@ -59,7 +59,7 @@ class SignIn extends React.Component {
 					        	<label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
 					        	<input 
 					        		onChange={this.onPasswordChange} 
-					        		className="b pa2 input-reset ba b--white-50 bg-transparent hover-bg-white-20 hover-white w-100" 
+					        		className="b pa2 input-reset white-80 ba b--white-50 bg-transparent hover-bg-white-20 hover-white w-100" 
 					        		type="password" 
 					        		name="password"  
 					        		id="password" 
@@ -69,7 +69,7 @@ class SignIn extends React.Component {
 					<div className="">
 					    <input
 					    	onClick = {this.onSubmitSignIn} 
-						    className="b ph3 pv2 input-reset ba b--white-50 bg-transparent grow pointer f6 dib white-80" 
+						    className="b ph3 pv2 input-reset ba b--white-50 bg-transparent pointer f6 dib dim white-80" 
 						    type="submit" 
 						    value="Sign in" />
 				    </div>

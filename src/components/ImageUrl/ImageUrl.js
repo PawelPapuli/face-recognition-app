@@ -1,10 +1,10 @@
 import React from 'react';
 import './ImageUrl.css';
-const ImageUrl = ({onUrlChange, onButtonClick}) => {
+const ImageUrl = ({onUrlChange, onButtonClick, onError}) => {
 	return (
 		<div>
-			<p className='f3 white-90'>
-				{'I want to detect faces in your pictures. Try me:'}
+			<p className='f4 white-90'>
+				{'I want to detect a face in your picture. Try me:'}
 			</p>
 			<div className=' wrapping-div center'>
 				<div className='form center pa4 br4 shadow-5'>

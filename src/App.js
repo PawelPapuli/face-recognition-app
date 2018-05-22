@@ -9,11 +9,7 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Register from './components/Register/Register';
 import Particles from 'react-particles-js';
 import {particlesOptions} from './particlesOptions.js';
-import Clarifai from 'clarifai';
 
-const app = new Clarifai.App({
-  apiKey: 'a0ad2545b34841c39408b6d5bd587fe9'
-});
 
 const initialState ={
   inputfield: '',
@@ -21,6 +17,7 @@ const initialState ={
   bounding_box: {},
   route: 'signIn',
   isSignedIn: false,
+  noErrors: true,
   user: {
     id:'',
     name: '',
@@ -51,12 +48,17 @@ class App extends Component {
     this.setState({inputfield:event.target.value, bounding_box:{}});
   }
 
-  onPictureSubmit = (event) => {
-    this.setState({imageUrl:this.state.inputfield});
-    app.models
-      .predict(
-        "a403429f2ddf4b49b307e318f00e528b", 
-        this.state.inputfield)
+  onPictureSubmit = () => {
+    this.setState({noErrors:true, imageUrl:this.state.inputfield},this.toggleErrorField);
+    console.log(1, this.state.noErrors);
+      fetch('http://localhost:3000/imageurl', {
+        method:'post',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+        input: this.state.inputfield
+        })
+      })
+      .then(response => response.json())
       .then(response => {
         if (response){
           fetch('http://localhost:3000/image', {
@@ -70,11 +72,24 @@ class App extends Component {
           .then(count => {
             this.setState(Object.assign(this.state.user, {entries: count}))
           })
-          .catch(console.log)
         }
         this.displayBoxOnFace(this.whereIsFace(response))
     })
-      .catch(error => console.log(error));
+      .catch(error => {
+        if (error){
+          console.log(2, this.state.noErrors);
+          this.setState({noErrors:false}, this.toggleErrorField);
+        }
+    })
+  }
+
+  toggleErrorField = () => {
+    const errElement = document.getElementById('error-info');
+    if (this.state.noErrors) {
+      errElement.style.display = 'none';
+    } else {
+      errElement.style.display = 'block';
+    }
   }
 
   onRouteChange = (route) => {
@@ -116,6 +131,7 @@ class App extends Component {
             <Logo />
             <Rank name={this.state.user.name} entries={this.state.user.entries} />
             <ImageUrl onUrlChange = {this.onUrlChange} onButtonClick={this.onPictureSubmit}/>
+            <p className='f4 dark-red' style={{display:'none'}} id='error-info'>Oops! Something went wrong, please try again with another picture.</p>
             <FaceRecognition box={bounding_box} imageUrl={imageUrl}/>  
         </div>
         : route==='register' 

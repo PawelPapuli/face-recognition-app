@@ -1,20 +1,20 @@
 const particlesOptions = { 
   particles: {
     number: {
-      value: 90,
+      value: 250,
       density: {
         enable: true,
         value_area: 789.1600969088593
       }
     },
     color: {
-      value: "#303E73"
+      value: "#0D95FE"
     },
     shape: {
       type: "circle",
       stroke: {
         width: 0,
-        color: "#303E73"
+        color: "#0D95FE"
       },
       polygon: {
         nb_sides: 7
@@ -22,7 +22,7 @@ const particlesOptions = {
     },
     opacity: {
       value: 0,
-      random: true,
+      random: false,
       anim: {
         enable: false,
         speed: 0.5,
@@ -42,14 +42,14 @@ const particlesOptions = {
     },
     line_linked: {
       enable: true,
-      distance: 150.02125301084325,
-      color: "#303E73",
-      opacity: 0.9,
+      distance: 100,
+      color: "#0D95FE",
+      opacity: 1,
       width: 1.3335222489852736
     },
     "move": {
       "enable": true,
-      "speed": 6,
+      "speed": 3,
       "direction": "none",
       "random": true,
       "straight": false,
