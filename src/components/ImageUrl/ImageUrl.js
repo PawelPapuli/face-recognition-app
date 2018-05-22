@@ -8,7 +8,12 @@ const ImageUrl = ({onUrlChange, onButtonClick, onError}) => {
 			</p>
 			<div className=' wrapping-div center'>
 				<div className='form center pa4 br4 shadow-5'>
-					<input type='text' className='f4 pa2 w-70 center' onChange={onUrlChange}/>
+					<input 
+						type='text' 
+						className='f4 pa2 w-70 center' 
+						onChange={onUrlChange}
+						placeholder='Paste the photo URL here'
+					/>
 					<button className='pointer link grow w-30 link ph3 bg-blue white-90' onClick={onButtonClick}>Upload</button>
 				</div>
 			</div>
