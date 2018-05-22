@@ -50,7 +50,6 @@ class App extends Component {
 
   onPictureSubmit = () => {
     this.setState({noErrors:true, imageUrl:this.state.inputfield},this.toggleErrorField);
-    console.log(1, this.state.noErrors);
       fetch('https://boiling-tor-71139.herokuapp.com/imageurl', {
         method:'post',
         headers: {'Content-Type':'application/json'},
@@ -77,7 +76,6 @@ class App extends Component {
     })
       .catch(error => {
         if (error){
-          console.log(2, this.state.noErrors);
           this.setState({noErrors:false}, this.toggleErrorField);
         }
     })
